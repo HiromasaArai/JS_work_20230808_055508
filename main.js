@@ -4,6 +4,8 @@
 //     処理;
 // }, false);
 
+// console.dir();
+
 /** * name属性値 */
 const RADIO_NAME = 'data_seq';
 /** * id属性値 編集ボタン */
@@ -121,23 +123,45 @@ function goCancelOrOkCommon() {
   col1.disabled = true;
 }
 
+/**
+ * 画面を編集状態にする
+ */
+function goEditing() {
+  // ボタンのhidden属性を付与
+  document.getElementById(ROW_EDIT_BTN_ID).hidden = true;
+  document.getElementById(ROW_UPPER_BTN_ID).hidden = true;
+  document.getElementById(ROW_DOWNER_BTN_ID).hidden = true;
+
+  // ボタンのhidden属性をリムーブ
+  document.getElementById(OK_BTN_ID).hidden = false;
+  document.getElementById(CANCEL_BTN_ID).hidden = false;
+
+  // 指定のラジオボタングループを非活性化
+  disabledRadioSwitch(RADIO_NAME, true);
+}
+
+function goRowMoving() {
+  // 上移動/下移動/確定/キャンセルボタンを表示する
+  // ボタンのhidden属性を付与
+  document.getElementById(ROW_EDIT_BTN_ID).hidden = true;
+
+  // ボタンのhidden属性をリムーブ
+  document.getElementById(ROW_UPPER_BTN_ID).hidden = false;
+  document.getElementById(ROW_DOWNER_BTN_ID).hidden = false;
+  document.getElementById(OK_BTN_ID).hidden = false;
+  document.getElementById(CANCEL_BTN_ID).hidden = false;
+
+  // 指定のラジオボタングループを非活性化
+  disabledRadioSwitch(RADIO_NAME, true);
+}
+
 
 // ラジオボタン「data_seq」のいずれかがチェックON/OFFされたときのイベントリスナー
 goRadioChangeDataSeq();
 
 // 編集ボタン押下時
 document.getElementById(ROW_EDIT_BTN_ID).addEventListener('click', function () {
-  // ボタンをhidden付与
-  document.getElementById(ROW_EDIT_BTN_ID).hidden = true;
-  document.getElementById(ROW_UPPER_BTN_ID).hidden = true;
-  document.getElementById(ROW_DOWNER_BTN_ID).hidden = true;
-
-  // ボタンをhiddenリムーブ
-  document.getElementById(OK_BTN_ID).hidden = false;
-  document.getElementById(CANCEL_BTN_ID).hidden = false;
-
-  // 指定のラジオボタングループを非活性化
-  disabledRadioSwitch(RADIO_NAME, true);
+  goEditing();
 
   // チェックドなラジオボタンに紐づく列1のinput type="text"を活性化
   let checkedRadioElem = getRadioElem(RADIO_NAME);
@@ -154,8 +178,17 @@ document.getElementById(OK_BTN_ID).addEventListener('click', function () {
   let resultObj = emptyVaridation(col1.value);
 
   if (resultObj.result) {
-    goCancelOrOkCommon();
+    // 通常の処理
+    let okBtnAlertMsg = '内容を更新いたします。よろしいですか。';
+    // 入力された値が元の値と同じであれば何もせずに状態が戻る
+    if (window.confirm(okBtnAlertMsg)) {
+      // 更新処理の前に、SEQの役割を持つradioデータの値を変更する（上から順に1～）。
+      // 更新処理（サブミット）
+      goCancelOrOkCommon();
+    }
+
   } else {
+    // エラー処理
     alert(resultObj.errMsg);
   }
 
@@ -163,8 +196,44 @@ document.getElementById(OK_BTN_ID).addEventListener('click', function () {
 
 // キャンセルボタン押下
 document.getElementById(CANCEL_BTN_ID).addEventListener('click', function () {
-  goCancelOrOkCommon();
-  location.reload();
+  let cancelBtnAlertMsg = '処理をキャンセルいたします。よろしいですか。';
+  if (window.confirm(cancelBtnAlertMsg)) {
+    goCancelOrOkCommon();
+    location.reload();
+  }
+}, false);
+
+// 上移動ボタン押下時
+document.getElementById(ROW_UPPER_BTN_ID).addEventListener('click', function () {
+  goRowMoving();
+
+  // tbody要素に指定したIDを取得し、変数「tbody」に代入
+  let tbody = document.getElementById('p2146-tbody');
+  // 選択された要素の親の親の要素を取得し（つまりtr要素）、変数「tr」に代入
+  let tr = getRadioElem(RADIO_NAME).parentElement.parentElement;
+
+  // もし「tr」の直前の兄弟ノード名が「TR」だった場合（上に「行」が存在している場合）
+  let workElem = tr.previousElementSibling;
+  if (workElem.localName === 'tr') {
+    tbody.insertBefore(tr, workElem);
+  }
+  // console.dir(tr);
+}, false);
+
+// 下移動ボタン押下時
+document.getElementById(ROW_DOWNER_BTN_ID).addEventListener('click', function () {
+  goRowMoving();
+
+  // tbody要素に指定したIDを取得し、変数「tbody」に代入
+  let tbody = document.getElementById('p2146-tbody');
+  // 選択された要素の親の親の要素を取得し（つまりtr要素）、変数「tr」に代入
+  let tr = getRadioElem(RADIO_NAME).parentElement.parentElement;
+
+  // もし「tr」の直後の兄弟ノード名が「TR」だった場合（下に「行」が存在している場合）
+  let workElem = tr.nextElementSibling;
+  if (workElem.localName === 'tr') {
+    tbody.insertBefore(workElem, tr);
+  }
 }, false);
 
 
