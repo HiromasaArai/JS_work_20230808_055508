@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src='main.js' defer></script>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td><input type="button" value="編集" id="rowEditBtn" disabled></td>
+      <td><input type="button" value="上移動" id="rowUpperBtn" disabled></td>
+      <td><input type="button" value="下移動" id="rowDownerBtn" disabled></td>
+      <td><input type="button" value="確定" hidden id="okBtn"></td>
+      <td><input type="button" value="キャンセル" hidden id="cancelBtn"></td>
+    </tr>
+  </table>
+  
+  <table id="p2146-2-table" border="1">
+    <thead>
+      <tr>
+        <th>選択</th>
+        <th>列1</th>
+        <th>列2</th>
+      </tr>
+    </thead>
+
+    <tbody id="p2146-2-tbody">
+      <tr>
+        <td>
+          <input type="radio" name="data_seq" value="1">
+        </td>
+        <td>
+          <input type="text" value="データ1" disabled>
+        </td>
+        <td>
+          <input type="text" value="データ1Comment" disabled>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <input type="radio" name="data_seq" value="2">
+        </td>
+        <td>
+          <input type="text" value="データ2" disabled>
+        </td>
+        <td>
+          <input type="text" value="データ2Comment" disabled>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <input type="radio" name="data_seq" value="3">
+        </td>
+        <td>
+          <input type="text" value="データ3" disabled>
+        </td>
+        <td>
+          <input type="text" value="データ3Comment" disabled>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+
+</html>
