@@ -4,14 +4,12 @@
 <!--
   メモ
   これはモックアップです。
-  これは最初の画面です。
-  画面の状態はプルダウンから選択項目を選択した状態です。
 -->
 
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Page Title</title>
+  <title>【定型文項目名メンテナンス】カテゴリ変更時（データ件数40件）</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -23,7 +21,10 @@
     <tr>
       <td>
         <select id="commentCategory">
-          <option></option>
+          <option value="" selected></option>
+          <option value="0">外装</option>
+          <option value="1">内装</option>
+          <option value="2">その他</option>
         </select>
       </td>
       <td><input type="button" value="編集" id="rowEditBtn" disabled></td>
@@ -33,51 +34,66 @@
       <td><input type="button" value="キャンセル" hidden id="cancelBtn"></td>
     </tr>
   </table>
-  
-  <table id="p2146-2-table" border="1">
-    <thead>
-      <tr>
-        <th>選択</th>
-        <th>列1</th>
-        <th>列2</th>
-      </tr>
-    </thead>
 
-    <tbody id="p2146-tbody">
-      <tr>
-        <td>
-          <input type="radio" name="data_seq" value="1">
-        </td>
-        <td>
-          <input type="text" value="データ1" disabled>
-        </td>
-        <td>
-          <input type="text" value="データ1Comment" disabled>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="radio" name="data_seq" value="2">
-        </td>
-        <td>
-          <input type="text" value="データ2" disabled>
-        </td>
-        <td>
-          <input type="text" value="データ2Comment" disabled>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="radio" name="data_seq" value="3">
-        </td>
-        <td>
-          <input type="text" value="データ3" disabled>
-        </td>
-        <td>
-          <input type="text" value="データ3Comment" disabled>
-        </td>
-      </tr>
-    </tbody>
+  <table>
+    <tr>
+      <td>
+        <table id="p2146-2-table" border="1">
+          <thead>
+            <tr>
+              <th>選択</th>
+              <th>列1</th>
+              <th>列2</th>
+            </tr>
+          </thead>
+          <tbody id="p2146-tbody">
+            <tr>
+              <td><input type="radio" name="data_seq" value="1"></td>
+              <td><input type="text" value="データ1" disabled></td>
+              <td><input type="text" value="データ1Comment" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="radio" name="data_seq" value="2"></td>
+              <td><input type="text" value="データ2" disabled></td>
+              <td><input type="text" value="データ2Comment" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="radio" name="data_seq" value="3"></td>
+              <td><input type="text" value="データ3" disabled></td>
+              <td><input type="text" value="データ3Comment" disabled></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <table id="XXXX1" border="1">
+          <thead>
+            <tr>
+              <th>選択</th>
+              <th>列1</th>
+              <th>列2</th>
+            </tr>
+          </thead>
+          <tbody id="XXXX2">
+            <tr>
+              <td><input type="radio" name="data_seq" value="1"></td>
+              <td><input type="text" value="データ1" disabled></td>
+              <td><input type="text" value="データ1Comment" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="radio" name="data_seq" value="2"></td>
+              <td><input type="text" value="データ2" disabled></td>
+              <td><input type="text" value="データ2Comment" disabled></td>
+            </tr>
+            <tr>
+              <td><input type="radio" name="data_seq" value="3"></td>
+              <td><input type="text" value="データ3" disabled></td>
+              <td><input type="text" value="データ3Comment" disabled></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
   </table>
 
 </body>
