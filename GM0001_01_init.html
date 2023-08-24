@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+  メモ
+  これはモックアップです。
+-->
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>【定型文項目名メンテナンス】初期表示</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src='main.js' defer></script>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>
+        <select id="commentCategory">
+          <option value="" selected></option>
+          <option value="0">外装</option>
+          <option value="1">内装</option>
+          <option value="2">その他</option>
+        </select>
+      </td>
+      <td><input type="button" value="編集" id="rowEditBtn" hidden></td>
+      <td><input type="button" value="上移動" id="rowUpperBtn" hidden></td>
+      <td><input type="button" value="下移動" id="rowDownerBtn" hidden></td>
+      <td><input type="button" value="確定" hidden id="okBtn"></td>
+      <td><input type="button" value="キャンセル" hidden id="cancelBtn"></td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

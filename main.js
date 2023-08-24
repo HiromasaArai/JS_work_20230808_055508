@@ -6,8 +6,10 @@
 
 // console.dir();
 
-/** * name属性値 */
+/** * name属性値 選択ラジオボタン */
 const RADIO_NAME = 'data_seq';
+/** * id属性値 カテゴリプルダウンメニュー */
+const CATEGORY_SEL_ID = 'commentCategory';
 /** * id属性値 編集ボタン */
 const ROW_EDIT_BTN_ID = 'rowEditBtn';
 /** * id属性値 上移動ボタン */
@@ -236,4 +238,7 @@ document.getElementById(ROW_DOWNER_BTN_ID).addEventListener('click', function ()
   }
 }, false);
 
-
+document.getElementById(CATEGORY_SEL_ID).onchange = event => {
+  let select = document.getElementById(CATEGORY_SEL_ID);
+  alert('画面遷移します。' + select.selectedIndex);
+}
